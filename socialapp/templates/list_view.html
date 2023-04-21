@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-end">
+    <a class="btn btn-success " href="{% url 'create_view' %}">Add a list of movie</a>
+</div>
+
+<div class="container">
+    
+    {% comment %} <li>{{ data.title }}</li>
+    <li>{{ data.description }}</li>
+    <li>{{ data.release_date }}</li>
+    <li>{{ data.director }}</li>
+    <li>{{ data.production_company }}</li> {% endcomment %}
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Director</th>
+            <th scope="col">Production Company</th>
+            <th scope="col">Info</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>{% for data in dataset %}
+            <td>{{ data.title }}</td>
+            <td>{{ data.description }}</td>
+            <td>{{ data.release_date }}</td>
+            <td>{{ data.director }}</td>
+            <td>{{ data.production_company }}</td>
+            <td><a class="btn btn-light" href="{% url 'detail_view' id=data.id %}" role="button">Info</a></td>
+            <td>
+                <a class="btn btn-primary" href="{% url 'update_view' id=data.id %}" role="button">Edit</a>
+                <a class="btn btn-danger" href="{% url 'delete_view' id=data.id %}" role="button">Delete</a>
+            </td>
+          </tr> {% endfor %}
+          
+        </tbody>
+      </table>
+   
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    
+    {% comment %} <li>{{ data.title }}</li>
+    <li>{{ data.description }}</li>
+    <li>{{ data.release_date }}</li>
+    <li>{{ data.director }}</li>
+    <li>{{ data.production_company }}</li> {% endcomment %}
+
+		<table class="table">
+			<thead>
+			<tr>
+				
+				<th scope="col">Title</th>
+				<th scope="col">Description</th>
+				<th scope="col">Release Date</th>
+				<th scope="col">Director</th>
+				<th scope="col">Production Company</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				
+				<td>{{ data.title }}</td>
+				<td>{{ data.description }}</td>
+				<td>{{ data.release_date }}</td>
+				<td>{{ data.director }}</td>
+				<td>{{ data.production_company }}</td>
+			</tr>   
+			</tbody>
+		</table>
+		<br>
+		<br>
+
+    	<a class="btn btn-link" href="{% url 'list_view' %}" role="button">Back</a>
+   
+</div>
+{% endblock %}

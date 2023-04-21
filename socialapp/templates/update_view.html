@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <!-- Create a Form -->
+        <form method="POST" class="row g-3">
+          <!-- Security token by Django -->
+          {% csrf_token %}
+          
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.title.label_tag }}
+              {{ form.title }}
+            </div>
+          </div>
+          
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.description.label_tag }}
+              {{ form.description }}
+            </div>
+          </div>
+          
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.release_date.label_tag }}
+              {{ form.release_date }}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.director.label_tag }}
+              {{ form.director }}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.production_company.label_tag }}
+              {{ form.production_company }}
+            </div>
+          </div>
+          
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
