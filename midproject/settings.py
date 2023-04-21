@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # client id 1098620401730-j6kvng9m9i0q5aos5o875lq7hc9imj3t.apps.googleusercontent.com
 # client secrete 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
 
-# github 
+# github
 # client id 7ae72d35190f13e993b4
 # client secrete 17e4f924863bec848209f61c7443fdf22decf043
 
@@ -48,21 +48,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-     # The following apps are required:
+
+    # The following apps are required:
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.facebook',
-    
+
     # your app
     'socialapp'
-    
+
 ]
 
 SITE_ID = 1
@@ -78,8 +78,8 @@ SOCIAL_ACCOUNT_PROVIDERS = {
             'access_type': 'online'
         }
     },
-    
-    
+
+
     'github': {
         'SCOPE': [
             'user',
@@ -87,7 +87,7 @@ SOCIAL_ACCOUNT_PROVIDERS = {
             'read:org',
         ],
     },
-    
+
     'facebook': {
         'METHOD': 'oauth2',
         'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
