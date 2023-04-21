@@ -1,14 +1,14 @@
-This web application is created using the Django framework. This application allows you to perform C.R.U.D. (create, read, update, and delete) functionality with social authentication integration from social providers, specifically Google, Github, and Facebook. 
+# This web application is created using the Django framework. This application allows you to perform C.R.U.D. (create, read, update, and delete) functionality with social authentication integration from social providers, specifically Google, Github, and Facebook. 
 
-Getting Started
+# Getting Started
 
-To use django-auth(project name for our LstMovies Web App), you will need Python 3 and Django 3 or later installed on your system.
-Clone the repository:
-	$ git clone https://github.com/AngelasGH/django-auth.git
-Navigate to the project directory:
-$ cd django-auth
-Install django-allauth library for our social integration: 
-	$ pip install django-allauth
-Run the application: 
-$ py manage.py runserver 
-(application can run in 'localhost' and '127.0.0.1' but it is needed to run our application in  'localhost:8000'  for us to seamlessly logged in our LstMovies because Facebook doesn't allow ‘127.0.0.1’ to logged in using that url)
+# To use django-auth(project name for our LstMovies Web App), you will need Python 3 and Django 3 or later installed on your system.
+	1. Clone the repository:
+		$ git clone https://github.com/AngelasGH/django-auth.git
+	2 .Navigate to the project directory:
+		$ cd django-auth
+	3. Install django-allauth library for our social integration: 
+		$ pip install django-allauth
+	4. Run the application: 
+		$ py manage.py runserver 
+		(application can run in 'localhost' and '127.0.0.1' but it is needed to run our application in  'localhost:8000'  for us to seamlessly logged in our LstMovies because Facebook doesn't allow ‘127.0.0.1’ to logged in using that url)
