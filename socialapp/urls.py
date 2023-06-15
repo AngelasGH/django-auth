@@ -10,5 +10,5 @@ urlpatterns = [
     path('list_view', list_view, name='list_view'),
     path('detail_view/<id>/', detail_view, name='detail_view'),
     path('delete_view/<id>/', delete_view, name='delete_view'),
-    
+
 ]

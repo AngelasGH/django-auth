@@ -1,52 +1,80 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load static %}
 {% load account socialaccount %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-  <div class="col-lg-6">
-    <div class="card">
-      <div class="card-body">
-        <h1 class="card-title">{% trans "Sign In" %}</h1>
+<section id="login">
+  <div class="container">
+      <div class="row d-flex justify-content-center">
+          <div class="col-lg-12 d-flex justify-content-center">
+              <p class="fs-2"><strong>{% trans "Sign In" %}</strong></p>
+          </div>
+          <div class="col-lg-4">
+              {% get_providers as socialaccount_providers %}
 
-        {% get_providers as socialaccount_providers %}
+              {% if socialaccount_providers %}
+              <p class="card-text">{% blocktrans with site.name as site_name %}Please sign in with one
+                  of your existing third party accounts. Or, <a class="text-light" href="{{ signup_url }}">sign up</a>
+                  for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-        {% if socialaccount_providers %}
-        <p class="card-text">{% blocktrans with site.name as site_name %}Please sign in with one
-        of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+                  <div class="socialaccount_ballot">
+                    <div class="socialaccount_ballot">
+                      <div class="row">
+                          <div class="col-12">
+                            <div class="col-12 col-lg-12 d-flex justify-content-center pt-2">
+                              <a class="button-signin-soc" href="{% provider_login_url 'github' %}">
+                                  <img src="{% static 'svg/github.svg' %}" alt="GitHub"> Github
+                              </a>
+                          </div>
+                          <div class="col-12 col-lg-12 d-flex justify-content-center pt-2">
+                              <a class="button-signin-soc" href="{% provider_login_url 'google' %}">
+                                  <img src="{% static 'svg/google.svg' %}" alt="Google"> Google
+                              </a>
+                          </div>
+                          <div class="col-12 col-lg-12 d-flex justify-content-center pt-2">
+                              <a class="button-signin-soc" href="{% provider_login_url 'facebook' %}">
+                                  <img src="{% static 'svg/facebook.svg' %}" alt="Facebook"> Facebook
+                              </a>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="col-12 col-lg-12 d-flex justify-content-center pt-2">
+                    <div class="login-or">{% trans 'or' %}</div>
+                  </div>
+                    
+                </div>
 
-        <div class="socialaccount_ballot">
+              {% include "socialaccount/snippets/login_extra.html" %}
 
-          <ul class="socialaccount_providers">
-            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-          </ul>
+              {% else %}
+              <p class="card-text">{% blocktrans %}If you have not created an account yet, then please
+                  <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+              {% endif %}
 
-          <div class="login-or">{% trans 'or' %}</div>
-
-        </div>
-
-        {% include "socialaccount/snippets/login_extra.html" %}
-
-        {% else %}
-        <p class="card-text">{% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-        {% endif %}
-
-        <form class="login" method="POST" action="{% url 'account_login' %}">
-          {% csrf_token %}
-          {{ form.as_p }}
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-          <a class="btn btn-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-          <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-        </form>
+              <form class="login" method="POST" action="{% url 'account_login' %}">
+                  {% csrf_token %}
+                  <div class="col-lg-12 py-2">
+                      <input type="email" class="form-control" placeholder="juan.delacrush@gmail.com">
+                  </div>
+                  <div class="col-lg-12 py-2">
+                      <input type="password" class="form-control" placeholder="●●●●●●●●●●●●">
+                  </div>
+                  <div class="col-lg-12 py-2">
+                      <a class="btn btn-link text-light" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                  </div>
+                  <div class="col-lg-12 d-flex justify-content-center py-2">
+                      <button class="button-signin" type="submit">{% trans "Sign In" %}</button>
+                  </div>
+              </form>
+          </div>
       </div>
-    </div>
   </div>
-</div>
+</section>
+
 {% endblock %}
