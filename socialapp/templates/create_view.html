@@ -1,15 +1,118 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <form method="POST" enctype="multipart/form-data" class="form">
-    <!-- Security token -->
-    {% csrf_token %}
- 
-    <!-- Using the formset -->
-    <div class="form-group">
-      {{ form.as_p }}
-    </div>
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <form method="POST" enctype="multipart/form-data" class="form">
+        <!-- Security token -->
+        {% csrf_token %}
      
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+        {% comment %} <!-- Using the formset -->
+        <div class="form-group">
+          {{ form.as_p }}
+        </div> {% endcomment %}
+{% comment %} 
+             labels = {
+            'Movie Title',
+            'Release Date'
+            'Genre',
+            'Production Company',
+            'Director',
+            'Movie Link',
+            'Image'
+        } {% endcomment %}
+        {% csrf_token %}
+          
+        <div class="col-md-12 pt-3">
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.title.label_tag }} 
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              {{ form.title }}
+            </div>
+          </div>
+          
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.release_date.label_tag }}
+            </div>
+          </div>
+          
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.release_date }}
+            </div>
+          </div>
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.genre.label_tag }}
+              
+            </div>
+          </div>
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+           
+              {{ form.genre }}
+            </div>
+          </div>
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.production_company.label_tag }}
+            </div>
+          </div>
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.production_company }}
+            </div>
+          </div>
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.director.label_tag }}
+            </div>
+          </div>
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.director }}
+            </div>
+          </div>
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.movie_link.label_tag }}
+            </div>
+          </div> 
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.movie_link }}
+            </div>
+          </div> 
+
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.image.label_tag }}
+            </div>
+          </div> 
+          <div class="col-md-12 pt-3">
+            <div class="form-group">
+              {{ form.image }}
+            </div>
+          </div> 
+        </div>
+
+        <button type="submit" class="button-signin">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

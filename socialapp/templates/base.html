@@ -65,8 +65,9 @@
 
     
     
-      {% if user.is_authenticated %}
+      
        {% block content %} 
+       {% if user.is_authenticated %}
           {% comment %} <h2 class="text-center">Welcome! {{ user.username }}</h2> {% endcomment %}
           <section id="home">
             <div class="container">
@@ -79,10 +80,9 @@
               <a href="{% url 'list_view' %}" class="movie-btn">MOVIE COLLECTION</a>
             </div>
         </section>
-        {% endblock %}
-    </section>
-      {% else %}
-          {% comment %} <p>Here are your list of Movies</p>
+        
+        {% else %}
+        {% comment %} <p>Here are your list of Movies</p>
           <a href="{% url 'list_view' %}">Click Here....</a> {% endcomment %}
           <section id="home">
             <div class="container">
@@ -96,13 +96,10 @@
             </div>
         </section>
       
-      {% endif %}
-   
-   
-
-    
+        {% endif %}
+        {% endblock %}
+    </section>
       
-   
     {% block extra_body %}
     {% endblock %}  
 

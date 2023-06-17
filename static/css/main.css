@@ -221,3 +221,73 @@ input {
     background-color: #b3988a8e;
     color: #f4f3f3;
 }
+
+#banner {
+    color: white;
+    background-color: #d7b7a7d6;
+    height: 40vh;
+    text-align: left;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-center;
+    padding-left: 500px;
+}
+
+.movie-img {
+    width: 10rem;
+    height: 5rem;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 300px;
+}
+
+.button-delete {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    background-color: #a48b7f8c;
+}
+
+.edit-btn {
+    background-color: transparent;
+    border: none;
+    color: #B3988A;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button-delete:hover {
+    color: #b3988a8b;
+}
+
+.edit-btn:hover {
+    background-color: #b3988a53;
+    color: #a48b7f;
+}
+
+.form-group input {
+    width: 500px;
+    margin-bottom: 1rem !important;
+}

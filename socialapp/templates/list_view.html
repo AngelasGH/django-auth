@@ -1,21 +1,26 @@
 {% extends "base.html" %}
-
+{% load static%}
 {% block content %}
-<div class="container d-flex justify-content-end">
-    <a class="btn btn-success " href="{% url 'create_view' %}">Add Movie</a>
+<section id="banner">
+  <div className="container">
+    
+      <h1>Favorite Movies</h1>
+    
+  </div>
+</section>
+<div class="container d-flex justify-content-end pt-4">
+    <a class="button-signin " href="{% url 'create_view' %}">Add Movie</a>
 </div>
 
 <div class="container">
-
-  <h2>MOVIE LIST</h2>
-    
+   
     {% comment %} <li>{{ data.title }}</li>
     <li>{{ data.description }}</li>
     <li>{{ data.release_date }}</li>
     <li>{{ data.director }}</li>
     <li>{{ data.production_company }}</li> {% endcomment %}
     <br>
-    <table class="table">
+    {% comment %} <table class="table">
         <thead>
           <tr>
             <th scope="col">Title</th>
@@ -42,7 +47,70 @@
           </tr> {% endfor %}
           
         </tbody>
-      </table>
+      </table>  {% endcomment %}
+
+<div class="container">
+        <table class="table align-middle mb-0 bg-white">
+          <thead class="bg-light">
+            <tr>
+              <th scope="col">Movie</th>
+              <th scope="col">Description</th>
+              <th scope="col">Director</th>
+              <th scope="col">Movie Link</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{% for data in dataset %}
+              {% if data.image %}
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                      src="{{data.image.url}}"
+                      alt=""
+                      style="width: 200px; height: 250px"
+                      class="rounded-0"
+                      />
+                 
+
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">{{ data.title }}</p>
+                    <p class="text-muted mb-0">{{ data.release_date }}</p>
+                  </div>
+                </div>
+              </td>
+              {% else %}
+              <td>No Image</td>
+              {% endif %}
+              <td>
+                <p class="fw-normal mb-1">Genre: {{ data.genre }}</p>
+                <p class="text-muted mb-0">Company: {{ data.production_company }}</p>
+              </td>
+              <td>
+                {{ data.director }}
+              </td>
+              {% if data.movie_link %}
+              <td>
+                <a href="{{ data.movie_link }}">{{ data.movie_link }}</a>
+              </td>
+              {% else %}
+              <td>
+                {{ data.movie_link }}
+              </td>
+              {% endif %}
+              
+             
+              <td>
+                <a type="button" class="btn btn-link btn-sm btn-rounded edit-btn" href="{% url 'update_view' id=data.id %}" role="button">
+                  Edit
+                </a>
+                <a class="button-delete" href="{% url 'delete_view' id=data.id %}" role="button">Delete</a>
+              </td>
+            </tr>{% endfor %}
+            
+          </tbody>
+        </table>
+      </div>
    
 </div>
 {% endblock %}

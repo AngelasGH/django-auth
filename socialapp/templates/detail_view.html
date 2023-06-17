@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container pt-5 px-5">
     
     {% comment %} <li>{{ data.title }}</li>
     <li>{{ data.description }}</li>
@@ -14,27 +14,49 @@
 			<tr>
 				
 				<th scope="col">Title</th>
-				<th scope="col">Description</th>
 				<th scope="col">Release Date</th>
-				<th scope="col">Director</th>
+				<th scope="col">Genre</th>
 				<th scope="col">Production Company</th>
+				<th scope="col">Director</th>
+				<th scope="col">Movie Link</th>
+				<th scope="col">Image</th>
 			</tr>
 			</thead>
 			<tbody>
 			<tr>
 				
 				<td>{{ data.title }}</td>
-				<td>{{ data.description }}</td>
 				<td>{{ data.release_date }}</td>
-				<td>{{ data.director }}</td>
+				<td>{{ data.genre }}</td>
 				<td>{{ data.production_company }}</td>
+				<td>{{ data.director }}</td>
+				{% if data.movie_link %}
+				<td>
+					<a href="{{ data.movie_link }}">{{ data.movie_link }}</a>
+				</td>
+				{% else %}
+				<td>
+					{{ data.movie_link }}
+				</td>
+				{% endif %}
+				
+				{% if data.image %}
+				<td><img
+					src="{{data.image.url}}"
+					alt=""
+					style="width: 200px; height: 250px"
+					class="rounded-0"
+					/></td>
+				{% else %}
+				<td>No Image</td>
+				{% endif %}
 			</tr>   
 			</tbody>
 		</table>
 		<br>
 		<br>
 
-    	<a class="btn btn-link" href="{% url 'list_view' %}" role="button">Back</a>
-   
+    	<a class="button-signin" href="{% url 'list_view' %}" role="button">Back</a>
+	
 </div>
 {% endblock %}

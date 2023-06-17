@@ -3,8 +3,8 @@ from .models import Movie
 
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('id', 'userid', 'title', 'release_date',
-                    'director', 'production_company')
+    list_display = ('title',  'release_date', 'genre',
+                    'production_company', 'director', 'movie_link', 'image')
 
 
 admin.site.register(Movie, MovieAdmin)
