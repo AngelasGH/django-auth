@@ -9,6 +9,8 @@
 		$ cd django-auth
 	3. Install django-allauth library for our social integration: 
 		$ pip install django-allauth
-	4. Run the application: 
+	4. Install pillow library for images:
+		$ pip install pillow
+	5. Run the application: 
 		$ py manage.py runserver 
 		(application can run in 'localhost' and '127.0.0.1' but it is needed to run our application in  'localhost:8000'  for us to seamlessly logged in our LstMovies because Facebook doesn't allow ‘127.0.0.1’ to logged in using that url)
